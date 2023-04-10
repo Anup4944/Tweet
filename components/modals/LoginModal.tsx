@@ -2,9 +2,11 @@ import useLoginModel from "@/hooks/useLoginModel";
 import React, { useCallback, useState } from "react";
 import Input from "../Input";
 import Modal from "../Modal";
+import useRegisterModelStore from "@/hooks/useRegisterModel";
 
 const LoginModal = () => {
   const loginModal = useLoginModel();
+  const registerModal = useRegisterModelStore();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,6 +25,15 @@ const LoginModal = () => {
     }
   }, [loginModal]);
 
+  const onToggle = useCallback(() => {
+    if (loading) {
+      return;
+    }
+
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loading, registerModal, loginModal]);
+
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Input
@@ -40,6 +51,20 @@ const LoginModal = () => {
     </div>
   );
 
+  const footerContent = (
+    <div className="text-neutral-400 text-center mt-4">
+      <p>
+        First time here?
+        <span
+          className="text-white cursor-pointer hover:underline ml-1"
+          onClick={onToggle}
+        >
+          Register
+        </span>
+      </p>
+    </div>
+  );
+
   return (
     <Modal
       disabled={loading}
@@ -49,6 +74,7 @@ const LoginModal = () => {
       onClose={loginModal.onClose}
       onSubmit={onSubmit}
       body={bodyContent}
+      footer={footerContent}
     />
   );
 };
