@@ -3,6 +3,7 @@ import React, { useCallback, useState } from "react";
 import Input from "../Input";
 import Modal from "../Modal";
 import useRegisterModelStore from "@/hooks/useRegisterModel";
+import { signIn } from "next-auth/react";
 
 const LoginModal = () => {
   const loginModal = useLoginModel();
@@ -16,14 +17,17 @@ const LoginModal = () => {
     try {
       setLoading(true);
 
-      // add login
+      await signIn("credentials", {
+        email,
+        password,
+      });
 
       loginModal.onClose();
     } catch (error) {
       console.log(error);
       setLoading(false);
     }
-  }, [loginModal]);
+  }, [loginModal, email, password]);
 
   const onToggle = useCallback(() => {
     if (loading) {
@@ -37,16 +41,17 @@ const LoginModal = () => {
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Input
-        placeHolder="Email"
+        placeholder="Email"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
-        disbaled={loading}
+        disabled={loading}
       />
       <Input
-        placeHolder="Password"
-        onChange={(e) => setPassword(e.target.value)}
+        disabled={loading}
+        placeholder="Password"
+        type="password"
         value={password}
-        disbaled={loading}
+        onChange={(e) => setPassword(e.target.value)}
       />
     </div>
   );

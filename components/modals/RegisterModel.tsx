@@ -76,6 +76,7 @@ const RegisterModel = () => {
         onChange={(e) => setPassword(e.target.value)}
         value={password}
         disbaled={loading}
+        type="password"
       />
     </div>
   );
