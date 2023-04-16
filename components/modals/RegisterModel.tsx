@@ -21,7 +21,8 @@ const RegisterModel = () => {
   const onSubmit = useCallback(async () => {
     try {
       setLoading(true);
-      await axios.post("/api/register", { email, password, username, name });
+
+      await axios.post("/api/register", { email, username, name, password });
 
       setLoading(false);
 
