@@ -57,25 +57,25 @@ const RegisterModel = () => {
         placeHolder="Email"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
-        disbaled={loading}
+        disabled={loading}
       />
       <Input
         placeHolder="Name"
         onChange={(e) => setName(e.target.value)}
         value={name}
-        disbaled={loading}
+        disabled={loading}
       />
       <Input
         placeHolder="Username"
         onChange={(e) => setUsername(e.target.value)}
         value={username}
-        disbaled={loading}
+        disabled={loading}
       />
       <Input
         placeHolder="Password"
         onChange={(e) => setPassword(e.target.value)}
         value={password}
-        disbaled={loading}
+        disabled={loading}
         type="password"
       />
     </div>
