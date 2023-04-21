@@ -4,6 +4,7 @@ import { format } from "date-fns";
 import { useMemo } from "react";
 import Button from "../Button";
 import { BiCalendar } from "react-icons/bi";
+import useEditModel from "@/hooks/useEditModel";
 
 interface UserBioProps {
   userId: string;
@@ -12,6 +13,8 @@ interface UserBioProps {
 const UserBio: React.FC<UserBioProps> = ({ userId }) => {
   const { data: cureentUser } = useCurrentUser();
   const { data: fetchedUser } = useUser(userId);
+
+  const editModel = useEditModel();
 
   const createdAt = useMemo(() => {
     if (!fetchedUser?.createdAt) {
@@ -24,7 +27,7 @@ const UserBio: React.FC<UserBioProps> = ({ userId }) => {
     <div className="border-b-[1px] border-neutral-800 pb-4">
       <div className="flex justify-end p-2">
         {cureentUser?.id === userId ? (
-          <Button secondary label="Edit" onClick={() => {}} />
+          <Button secondary label="Edit" onClick={editModel.onOpen} />
         ) : (
           <Button onClick={() => {}} label="Follow" secondary />
         )}
@@ -44,7 +47,7 @@ const UserBio: React.FC<UserBioProps> = ({ userId }) => {
           </div>
         </div>
         <div className="flex flex-row items-center mt-4 gap-6">
-          <div className="flex flex-row items-center gap-1">
+          <div className="flex items-center gap-1">
             <p className="text-white">{fetchedUser?.followingIds?.length}</p>
             <p className="text-neutral-500">Following</p>
           </div>

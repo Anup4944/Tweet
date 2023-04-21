@@ -12,9 +12,11 @@ const serverAuth = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const currentUser = await prisma.user.findUnique({
     where: {
-      email: session?.user?.email,
+      email: session.user.email,
     },
   });
+
+  console.log("From server auth", currentUser);
   if (!currentUser) {
     throw new Error("Not signed in");
   }
