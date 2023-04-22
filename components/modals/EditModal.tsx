@@ -97,10 +97,10 @@ const EditModal = () => {
     <Modal
       disabled={isLoading}
       isOpen={editModal.isOpen}
+      onClose={editModal.onClose}
       title="Edit your profile"
       body={bodyContent}
       actionLabel="Save"
-      onClose={editModal.onClose}
       onSubmit={onSubmit}
     />
   );
