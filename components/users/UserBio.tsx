@@ -1,5 +1,6 @@
 import useCurrentUser from "@/hooks/useCurrentUser";
 import useUser from "@/hooks/useUser";
+import useFollow from "@/hooks/useFollow";
 import { format } from "date-fns";
 import { useMemo } from "react";
 import Button from "../Button";
@@ -16,6 +17,8 @@ const UserBio: React.FC<UserBioProps> = ({ userId }) => {
 
   const editModel = useEditModel();
 
+  const { isFollowing, toggleFollow } = useFollow(userId);
+
   const createdAt = useMemo(() => {
     if (!fetchedUser?.createdAt) {
       return null;
@@ -29,7 +32,12 @@ const UserBio: React.FC<UserBioProps> = ({ userId }) => {
         {cureentUser?.id === userId ? (
           <Button secondary label="Edit" onClick={editModel.onOpen} />
         ) : (
-          <Button onClick={() => {}} label="Follow" secondary />
+          <Button
+            onClick={toggleFollow}
+            label={isFollowing ? "Unfollow" : "Follow"}
+            secondary={!isFollowing}
+            outline={isFollowing}
+          />
         )}
       </div>
       <div className="mt-8 px-4">
