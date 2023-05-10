@@ -11,7 +11,7 @@ interface PostItemProps {
   userId?: string;
 }
 
-const PostItem: React.FC<PostItemProps> = ({ data, userId }) => {
+const PostItem: React.FC<PostItemProps> = ({ data = {}, userId }) => {
   const router = useRouter();
 
   const loginModal = useLoginModel();
@@ -26,8 +26,9 @@ const PostItem: React.FC<PostItemProps> = ({ data, userId }) => {
     },
     [router, data.user.id]
   );
+
   const goToPost = useCallback(() => {
-    router.push(`/users/${data.id}`);
+    router.push(`/posts/${data.id}`);
   }, [router, data.id]);
 
   const onLike = useCallback(
