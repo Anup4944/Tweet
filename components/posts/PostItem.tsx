@@ -13,7 +13,6 @@ interface PostItemProps {
 
 const PostItem: React.FC<PostItemProps> = ({ data = {}, userId }) => {
   const router = useRouter();
-
   const loginModal = useLoginModel();
 
   const { data: currentUser } = useCurrentUser();
