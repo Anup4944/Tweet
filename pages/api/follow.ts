@@ -33,6 +33,31 @@ export default async function handler(
 
     if (req.method === "POST") {
       updateFollowingIds.push(userId);
+      try {
+        const followedUser = await prisma.user.findUnique({
+          where: {
+            id: userId,
+          },
+        });
+
+        await prisma.notification.create({
+          data: {
+            body: `${followedUser?.username} started following you!`,
+            userId,
+          },
+        });
+
+        await prisma.user.update({
+          where: {
+            id: userId,
+          },
+          data: {
+            hasNotification: true,
+          },
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
     if (req.method === "DELETE") {
       updateFollowingIds = updateFollowingIds.filter(
