@@ -56,7 +56,15 @@ const EditModal = () => {
       toast.error("Something went wrong!");
       setLoading(false);
     }
-  }, [profileImage, coverImage, name, username, bio]);
+  }, [
+    profileImage,
+    coverImage,
+    name,
+    username,
+    bio,
+    editModal,
+    mutateFetchedUser,
+  ]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
