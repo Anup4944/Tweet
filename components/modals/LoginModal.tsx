@@ -3,6 +3,7 @@ import React, { useCallback, useState } from "react";
 import Input from "../Input";
 import Modal from "../Modal";
 import useRegisterModelStore from "@/hooks/useRegisterModel";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { signIn } from "next-auth/react";
 
 const LoginModal = () => {
@@ -12,6 +13,7 @@ const LoginModal = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = useCallback(async () => {
     try {
@@ -29,6 +31,10 @@ const LoginModal = () => {
     }
   }, [loginModal, email, password]);
 
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   const onToggle = useCallback(() => {
     if (loading) {
       return;
@@ -44,15 +50,28 @@ const LoginModal = () => {
         placeHolder="Email"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
+        type="email"
         disabled={loading}
       />
       <Input
         disabled={loading}
         placeHolder="Password"
-        type="password"
+        type={showPassword ? "text" : "password"}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
+      <button
+        type="button"
+        onClick={handleTogglePassword}
+        className="text-sky-900 top-1/2 
+        right-0  flex items-center justify-center focus:outline-none"
+      >
+        {showPassword ? (
+          <AiOutlineEye size={30} />
+        ) : (
+          <AiOutlineEyeInvisible size={30} />
+        )}
+      </button>
     </div>
   );
 

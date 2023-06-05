@@ -4,6 +4,7 @@ import Modal from "../Modal";
 import useRegisterModelStore from "@/hooks/useRegisterModel";
 import useLoginModel from "@/hooks/useLoginModel";
 import axios from "axios";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { toast } from "react-hot-toast";
 import { signIn } from "next-auth/react";
 
@@ -17,6 +18,7 @@ const RegisterModel = () => {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = useCallback(async () => {
     try {
@@ -41,6 +43,10 @@ const RegisterModel = () => {
       setLoading(false);
     }
   }, [registerModel, email, password, username, name]);
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const onToggle = useCallback(() => {
     if (loading) {
@@ -78,6 +84,19 @@ const RegisterModel = () => {
         disabled={loading}
         type="password"
       />
+
+      <button
+        type="button"
+        onClick={handleTogglePassword}
+        className="text-sky-900 top-1/2 
+        right-0  flex items-center justify-center focus:outline-none"
+      >
+        {showPassword ? (
+          <AiOutlineEye size={30} />
+        ) : (
+          <AiOutlineEyeInvisible size={30} />
+        )}
+      </button>
     </div>
   );
 
