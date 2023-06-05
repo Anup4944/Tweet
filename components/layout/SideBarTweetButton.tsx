@@ -1,4 +1,4 @@
-import useLoginModel from "@/hooks/useLoginModel";
+import useLoginModel from "../../hooks/useLoginModel";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 import { FaFeather } from "react-icons/fa";

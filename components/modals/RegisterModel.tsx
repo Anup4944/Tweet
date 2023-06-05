@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from "react";
 import Input from "../Input";
 import Modal from "../Modal";
-import useRegisterModelStore from "@/hooks/useRegisterModel";
-import useLoginModel from "@/hooks/useLoginModel";
+import useRegisterModelStore from "../../hooks/useRegisterModel";
+import useLoginModel from "../../hooks/useLoginModel";
 import axios from "axios";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { toast } from "react-hot-toast";

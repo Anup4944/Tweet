@@ -1,5 +1,5 @@
-import serverAuth from "@/libs/serverAuth";
-import prisma from "@/libs/prismadb";
+import serverAuth from "../../libs/serverAuth";
+import prisma from "../../libs/prismadb";
 
 import { NextApiRequest, NextApiResponse } from "next";
 

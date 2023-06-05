@@ -1,6 +1,6 @@
-import useCurrentUser from "@/hooks/useCurrentUser";
-import useEditModel from "@/hooks/useEditModel";
-import useUser from "@/hooks/useUser";
+import useCurrentUser from "../../hooks/useCurrentUser";
+import useEditModel from "../../hooks/useEditModel";
+import useUser from "../../hooks/useUser";
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";

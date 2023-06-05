@@ -1,11 +1,11 @@
-import useCurrentUser from "@/hooks/useCurrentUser";
-import useLoginModel from "@/hooks/useLoginModel";
+import useCurrentUser from "../../hooks/useCurrentUser";
+import useLoginModel from "../../hooks/useLoginModel";
 import { formatDistanceToNowStrict } from "date-fns";
 import { useRouter } from "next/router";
 import React, { useCallback, useMemo } from "react";
 import Avatar from "../Avatar";
 import { AiOutlineHeart, AiFillHeart, AiOutlineMessage } from "react-icons/ai";
-import useLike from "@/hooks/useLike";
+import useLike from "../../hooks/useLike";
 
 interface PostItemProps {
   data: Record<string, any>;

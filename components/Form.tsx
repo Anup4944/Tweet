@@ -1,13 +1,13 @@
-import useCurrentUser from "@/hooks/useCurrentUser";
-import useLoginModel from "@/hooks/useLoginModel";
-import usePosts from "@/hooks/usePosts";
-import useRegisterModelStore from "@/hooks/useRegisterModel";
+import useCurrentUser from "../hooks/useCurrentUser";
+import useLoginModel from "../hooks/useLoginModel";
+import usePosts from "../hooks/usePosts";
+import useRegisterModelStore from "../hooks/useRegisterModel";
 import axios from "axios";
 import React, { useCallback, useState } from "react";
 import { toast } from "react-hot-toast";
 import Button from "./Button";
 import Avatar from "./Avatar";
-import usePost from "@/hooks/usePost";
+import usePost from "../hooks/usePost";
 
 interface FormProps {
   placeholder: string;

@@ -1,8 +1,8 @@
-import useLoginModel from "@/hooks/useLoginModel";
+import useLoginModel from "../../hooks/useLoginModel";
 import React, { useCallback, useState } from "react";
 import Input from "../Input";
 import Modal from "../Modal";
-import useRegisterModelStore from "@/hooks/useRegisterModel";
+import useRegisterModelStore from "../../hooks/useRegisterModel";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { signIn } from "next-auth/react";
 
